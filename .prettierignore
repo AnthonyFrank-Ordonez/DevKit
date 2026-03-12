@@ -1,0 +1,25 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+dist-ssr
+build
+
+# Lock files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Auto-generated
+*.d.ts
+env.d.ts
+
+# Cache
+.cache
+.temp
+.tmp
+
+# Misc
+*.min.js
+*.min.css
