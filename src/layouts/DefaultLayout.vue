@@ -8,7 +8,7 @@ import AppSidebar from '@/components/AppSidebar.vue'
     class="bg-primary text-foreground mx-auto grid min-h-screen w-full grid-cols-1 lg:max-w-7xl lg:grid-cols-12"
   >
     <!-- Sidebar -->
-    <aside class="border-border/20 bg-surface/20 col-span-3 border-0 border-r p-6">
+    <aside class="border-border/50 bg-surface/50 col-span-3 border-0 border-r border-l p-6">
       <app-sidebar />
     </aside>
 

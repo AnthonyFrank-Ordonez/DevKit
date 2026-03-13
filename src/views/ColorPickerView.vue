@@ -255,17 +255,17 @@ watch(hex, (val) => {
 
 <template>
   <div class="flex flex-col gap-2">
-    <h1 class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">Color Picker</h1>
-    <p class="text-sm font-semibold tracking-widest text-slate-500 uppercase">
+    <h1 class="text-accent text-2xl font-extrabold tracking-tight sm:text-3xl">Color Picker</h1>
+    <p class="text-sm font-semibold tracking-widest text-muted uppercase">
       Pick · Convert · Copy
     </p>
   </div>
 
   <!-- Canvas Card -->
-  <div class="mt-5 overflow-hidden rounded-xl border border-white/10">
-    <div class="flex items-center gap-2 border-b border-white/5 bg-white/2 px-4 py-2">
+  <div class="mt-5 overflow-hidden rounded-xl border border-border">
+    <div class="flex items-center gap-2 border-b border-border bg-surface px-4 py-2">
       <span class="h-2 w-2 rounded-full bg-yellow-400 shadow-[0_0_6px_#fbbf24]"></span>
-      <span class="text-[11px] font-bold tracking-widest text-slate-500 uppercase"
+      <span class="text-[11px] font-bold tracking-widest text-muted uppercase"
         >Color Canvas</span
       >
     </div>
@@ -312,18 +312,18 @@ watch(hex, (val) => {
       <div class="mt-3 flex items-center justify-between gap-3">
         <div class="grid grid-cols-[auto_1fr] items-center gap-x-3 gap-y-2">
           <!-- Labels column -->
-          <span class="text-[10px] font-bold tracking-widest text-slate-500 uppercase">New</span>
+          <span class="text-[10px] font-bold tracking-widest text-muted uppercase">New</span>
           <div
-            class="h-8 w-24 rounded-md border border-white/10"
+            class="h-8 w-24 rounded-md border border-border"
             data-testid="new-color"
             :style="{ backgroundColor: hex }"
           />
 
-          <span class="text-[10px] font-bold tracking-widest text-slate-500 uppercase"
+          <span class="text-[10px] font-bold tracking-widest text-muted uppercase"
             >Previous</span
           >
           <div
-            class="h-8 w-24 cursor-pointer rounded-md border border-white/10 transition-opacity hover:opacity-75"
+            class="h-8 w-24 cursor-pointer rounded-md border border-border transition-opacity hover:opacity-75"
             :style="{ backgroundColor: previousColor }"
             title="Click to restore previous color"
             data-testid="previous-color"
@@ -333,36 +333,36 @@ watch(hex, (val) => {
 
         <!-- Right: hex values aligned to their swatch -->
         <div class="flex flex-col items-end justify-center gap-2">
-          <span class="font-mono text-sm text-slate-500">{{ hex }}</span>
-          <span class="font-mono text-sm text-slate-500">{{ previousColor }}</span>
+          <span class="font-mono text-sm text-muted">{{ hex }}</span>
+          <span class="font-mono text-sm text-muted">{{ previousColor }}</span>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Color Values -->
-  <div class="mt-5 overflow-hidden rounded-xl border border-white/10">
+  <div class="mt-5 overflow-hidden rounded-xl border border-border">
     <!-- Header -->
-    <div class="flex items-center gap-2 border-b border-white/5 bg-white/2 px-4 py-2">
+    <div class="flex items-center gap-2 border-b border-border bg-surface px-4 py-2">
       <span class="bg-success h-2 w-2 rounded-full shadow-[0_0_6px_#34d399]"></span>
-      <span class="text-[11px] font-bold tracking-widest text-slate-500 uppercase"
+      <span class="text-[11px] font-bold tracking-widest text-muted uppercase"
         >Color Values</span
       >
     </div>
 
     <!-- Color Vals -->
-    <div class="divide-y divide-white/10">
+    <div class="divide-y divide-border">
       <!-- Hex -->
       <div class="flex items-center gap-3 px-4 py-2.5">
         <span
-          class="w-12 shrink-0 font-mono text-[12px] font-bold tracking-widest text-slate-500 uppercase"
+          class="w-12 shrink-0 font-mono text-[12px] font-bold tracking-widest text-muted uppercase"
           >hex</span
         >
         <input
           type="text"
           data-testid="hex-input"
           :value="hexInput"
-          class="flex-1 border border-b border-transparent bg-transparent font-mono text-sm text-slate-300 transition-colors outline-none focus:border-b-white/20"
+          class="flex-1 border border-b border-transparent bg-transparent font-mono text-sm text-foreground transition-colors outline-none focus:border-b-border/20"
           @input="onHexInput(($event.target as HTMLInputElement).value)"
           @blur="onHexBlur"
           maxlength="7"
@@ -372,11 +372,11 @@ watch(hex, (val) => {
         <button
           @click="onCopy(hex, 'hex')"
           data-testid="hex-copy-btn"
-          class="shrink-0 rounded-md border border-white/10 px-2.5 py-1 text-[11px] font-semibold transition-colors"
+          class="shrink-0 rounded-md border border-border px-2.5 py-1 text-[11px] font-semibold transition-colors"
           :class="
             copiedKey === 'hex'
-              ? 'border-green-400/30 text-green-400'
-              : 'text-slate-500 hover:text-slate-300'
+              ? 'border-green-400/30 text-success'
+              : 'text-muted hover:text-foreground'
           "
         >
           {{ copiedKey === 'hex' ? 'Copied!' : 'Copy' }}
@@ -386,21 +386,21 @@ watch(hex, (val) => {
       <!-- RGB -->
       <div class="flex items-center gap-3 px-4 py-2.5">
         <span
-          class="w-12 shrink-0 font-mono text-[12px] font-bold tracking-widest text-slate-500 uppercase"
+          class="w-12 shrink-0 font-mono text-[12px] font-bold tracking-widest text-muted uppercase"
           data-testid="rgb-output"
           >rgb</span
         >
-        <span class="flex-1 font-mono text-sm text-slate-300" data-testid="rgb-text"
+        <span class="flex-1 font-mono text-sm text-foreground" data-testid="rgb-text"
           >rgb({{ rgb.r }}, {{ rgb.g }}, {{ rgb.b }})</span
         >
         <button
           @click="onCopy(`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`, 'rgb')"
           data-testid="rgb-copy-btn"
-          class="shrink-0 rounded-md border border-white/10 px-2.5 py-1 text-[11px] font-semibold transition-colors"
+          class="shrink-0 rounded-md border border-border px-2.5 py-1 text-[11px] font-semibold transition-colors"
           :class="
             copiedKey === 'rgb'
-              ? 'border-green-400/30 text-green-400'
-              : 'text-slate-500 hover:text-slate-300'
+              ? 'border-green-400/30 text-success'
+              : 'text-muted hover:text-foreground'
           "
         >
           {{ copiedKey === 'rgb' ? 'Copied!' : 'Copy' }}
@@ -410,21 +410,21 @@ watch(hex, (val) => {
       <!-- HSL -->
       <div class="flex items-center gap-3 px-4 py-2.5">
         <span
-          class="w-12 shrink-0 font-mono text-[12px] font-bold tracking-widest text-slate-500 uppercase"
+          class="w-12 shrink-0 font-mono text-[12px] font-bold tracking-widest text-muted uppercase"
           data-testid="hsl-output"
           >HSL</span
         >
-        <span class="flex-1 font-mono text-sm text-slate-300" data-testid="hsl-text"
+        <span class="flex-1 font-mono text-sm text-foreground" data-testid="hsl-text"
           >hsl({{ hsl.h }}, {{ hsl.s }}%, {{ hsl.l }}%)</span
         >
         <button
           @click="onCopy(`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`, 'hsl')"
           data-testid="hsl-copy-btn"
-          class="shrink-0 rounded-md border border-white/10 px-2.5 py-1 text-[11px] font-semibold transition-colors"
+          class="shrink-0 rounded-md border border-border px-2.5 py-1 text-[11px] font-semibold transition-colors"
           :class="
             copiedKey === 'hsl'
-              ? 'border-green-400/30 text-green-400'
-              : 'text-slate-500 hover:text-slate-300'
+              ? 'border-green-400/30 text-success'
+              : 'text-muted hover:text-foreground'
           "
         >
           {{ copiedKey === 'hsl' ? 'Copied!' : 'Copy' }}
@@ -434,21 +434,21 @@ watch(hex, (val) => {
       <!-- HSV -->
       <div class="flex items-center gap-3 px-4 py-2.5" data-testid="hsv-output">
         <span
-          class="w-12 shrink-0 font-mono text-[12px] font-bold tracking-widest text-slate-500 uppercase"
+          class="w-12 shrink-0 font-mono text-[12px] font-bold tracking-widest text-muted uppercase"
           data-testid="hsv-output"
           >hsv</span
         >
-        <span class="flex-1 font-mono text-sm text-slate-300" data-testid="hsv-text"
+        <span class="flex-1 font-mono text-sm text-foreground" data-testid="hsv-text"
           >hsv({{ hue }}, {{ saturation }}%, {{ brightness }}%)</span
         >
         <button
           @click="onCopy(`hsv(${hue}, ${saturation}%, ${brightness}%)`, 'hsv')"
           data-testid="hsv-copy-btn"
-          class="shrink-0 rounded-md border border-white/10 px-2.5 py-1 text-[11px] font-semibold transition-colors"
+          class="shrink-0 rounded-md border border-border px-2.5 py-1 text-[11px] font-semibold transition-colors"
           :class="
             copiedKey === 'hsv'
-              ? 'border-green-400/30 text-green-400'
-              : 'text-slate-500 hover:text-slate-300'
+              ? 'border-green-400/30 text-success'
+              : 'text-muted hover:text-foreground'
           "
         >
           {{ copiedKey === 'hsv' ? 'Copied!' : 'Copy' }}
@@ -458,21 +458,21 @@ watch(hex, (val) => {
       <!-- CMYK -->
       <div class="flex items-center gap-3 px-4 py-2.5">
         <span
-          class="w-12 shrink-0 font-mono text-[12px] font-bold tracking-widest text-slate-500 uppercase"
+          class="w-12 shrink-0 font-mono text-[12px] font-bold tracking-widest text-muted uppercase"
           data-testid="cmyk-output"
           >cmyk</span
         >
-        <span class="flex-1 font-mono text-sm text-slate-300" data-testid="cmyk-text"
+        <span class="flex-1 font-mono text-sm text-foreground" data-testid="cmyk-text"
           >cmyk({{ cmyk.c }}, {{ cmyk.m }}, {{ cmyk.y }}, {{ cmyk.k }})</span
         >
         <button
           @click="onCopy(`cmyk(${cmyk.c}, ${cmyk.m}, ${cmyk.y}, ${cmyk.k})`, 'cmyk')"
-          class="shrink-0 rounded-md border border-white/10 px-2.5 py-1 text-[11px] font-semibold transition-colors"
+          class="shrink-0 rounded-md border border-border px-2.5 py-1 text-[11px] font-semibold transition-colors"
           data-testid="cmyk-copy-btn"
           :class="
             copiedKey === 'cmyk'
-              ? 'border-green-400/30 text-green-400'
-              : 'text-slate-500 hover:text-slate-300'
+              ? 'border-green-400/30 text-success'
+              : 'text-muted hover:text-foreground'
           "
         >
           {{ copiedKey === 'cmyk' ? 'Copied!' : 'Copy' }}
@@ -482,21 +482,21 @@ watch(hex, (val) => {
       <!-- CSS Variable -->
       <div class="flex items-center gap-3 px-4 py-2.5">
         <span
-          class="w-12 shrink-0 font-mono text-[12px] font-bold tracking-widest text-slate-500 uppercase"
+          class="w-12 shrink-0 font-mono text-[12px] font-bold tracking-widest text-muted uppercase"
           data-testid="css-output"
           >css</span
         >
-        <span class="flex-1 font-mono text-sm text-slate-300" data-testid="css-text"
+        <span class="flex-1 font-mono text-sm text-foreground" data-testid="css-text"
           >--color: {{ hex }}</span
         >
         <button
           @click="onCopy(`--color: ${hex};`, 'css')"
           data-testid="css-copy-btn"
-          class="shrink-0 rounded-md border border-white/10 px-2.5 py-1 text-[11px] font-semibold transition-colors"
+          class="shrink-0 rounded-md border border-border px-2.5 py-1 text-[11px] font-semibold transition-colors"
           :class="
             copiedKey === 'css'
-              ? 'border-green-400/30 text-green-400'
-              : 'text-slate-500 hover:text-slate-300'
+              ? 'border-green-400/30 text-success'
+              : 'text-muted hover:text-foreground'
           "
         >
           {{ copiedKey === 'css' ? 'Copied!' : 'Copy' }}

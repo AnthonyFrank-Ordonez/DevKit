@@ -5,6 +5,29 @@
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DevKit</title>
+    <script>
+      ;(function () {
+        const theme = localStorage.getItem('theme')
+        if (
+          theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark')
+        }
+      })()
+    </script>
+    <style>
+      html.dark,
+      html.dark body {
+        background-color: #0f1117 !important;
+        color: #e4e4e7 !important;
+      }
+      html,
+      body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>

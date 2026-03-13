@@ -1,22 +1,24 @@
 @import './base.css';
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  /* Background colors */
-  --color-primary: #0f1117;
-  --color-surface: #1a1d27;
-  --color-elevated: #222532;
+  /* Default (Light Mode) Values */
+  --color-primary: #ffffff;
+  --color-surface: #f9fafb;
+  --color-elevated: #ffffff;
 
   /* Border colors */
-  --color-border: #2a2d3a;
-  --color-border-hover: #3a3d4a;
+  --color-border: #e5e7eb;
+  --color-border-hover: #d1d5db;
 
   /* Text colors */
-  --color-foreground: #e4e4e7;
-  --color-muted: #a1a1aa;
-  --color-faint: #71717a;
+  --color-foreground: #000000;
+  --color-muted: #6b7280;
+  --color-faint: #9ca3af;
 
-  /* Accent — Cyan */
+  /* Accent — Cyan (Consistent in both modes) */
   --color-accent: #06b6d4;
   --color-accent-hover: #22d3ee;
   --color-accent-muted: #06b6d426;
@@ -25,4 +27,24 @@
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
+}
+
+/* Dark Mode Overrides */
+.dark {
+  --color-primary: #0f1117;
+  --color-surface: #1a1d27;
+  --color-elevated: #222532;
+  --color-border: #2a2d3a;
+  --color-border-hover: #3a3d4a;
+  --color-foreground: #e4e4e7;
+  --color-muted: #a1a1aa;
+  --color-faint: #71717a;
+}
+
+body {
+  background-color: var(--color-primary);
+  color: var(--color-foreground);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }

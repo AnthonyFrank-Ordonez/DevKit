@@ -1,14 +1,32 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 
 import { mount, VueWrapper } from '@vue/test-utils'
 import AppSidebar from '../AppSidebar.vue'
 import { createRouter, createWebHistory, type Router } from 'vue-router'
+import { createPinia, setActivePinia } from 'pinia'
+
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: vi.fn().mockImplementation((query) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  })),
+})
 
 describe('AppSidebar', () => {
   let router: Router
   let wrapper: VueWrapper
+  let pinia: ReturnType<typeof createPinia>
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    pinia = createPinia()
+    setActivePinia(pinia)
     router = createRouter({
       history: createWebHistory(),
       routes: [
@@ -17,8 +35,11 @@ describe('AppSidebar', () => {
         { path: '/color-picker', name: 'color-picker', component: { template: '<div></div>' } },
       ],
     })
-
-    wrapper = mount(AppSidebar, { global: { plugins: [router] } })
+    wrapper = mount(AppSidebar, {
+      global: {
+        plugins: [router, pinia],
+      },
+    })
   })
 
   it('renders properly', () => {

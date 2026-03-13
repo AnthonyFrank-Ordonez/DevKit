@@ -39,7 +39,7 @@ function clearAll() {
 <template>
   <div class="">
     <div class="flex flex-col gap-2">
-      <h1 class="text-3xl font-extrabold tracking-tight text-white">JSON Formatter</h1>
+      <h1 class="text-3xl font-extrabold tracking-tight text-accent">JSON Formatter</h1>
       <p class="text-muted text-sm font-semibold tracking-widest uppercase">
         Parse · Validate · Beautify
       </p>
@@ -47,11 +47,11 @@ function clearAll() {
 
     <!-- Input Card (Raw Input) -->
     <div
-      class="focus-within:border-accent/50 mt-5 overflow-hidden rounded-xl border border-white/10 transition-colors"
+      class="focus-within:border-accent/50 mt-5 overflow-hidden rounded-xl border border-border transition-colors"
     >
-      <div class="flex items-center justify-between border-b border-white/5 bg-white/2 px-4 py-2">
+      <div class="flex items-center justify-between border-b border-border bg-surface px-4 py-2">
         <span
-          class="flex items-center gap-2 text-[11px] font-bold tracking-widest text-slate-500 uppercase"
+          class="flex items-center gap-2 text-[11px] font-bold tracking-widest text-muted uppercase"
         >
           <span class="h-2 w-2 rounded-full bg-yellow-400 shadow-[0_0_6px_#fbbf24]"></span>
           Raw Input
@@ -62,7 +62,7 @@ function clearAll() {
           <button
             @click="formatJson"
             data-testid="format-btn"
-            class="bg-accent hover:bg-accent-hover/70 cursor-pointer rounded-md border border-white/10 px-3 py-1 text-[12px] font-semibold text-white transition-all hover:border-white/20"
+            class="bg-accent hover:bg-accent-hover/70 cursor-pointer rounded-md border border-border px-3 py-1 text-[12px] font-semibold text-white transition-all hover:border-border"
           >
             <span class="h-2 w-2 rounded-full"></span>
             Format
@@ -71,7 +71,7 @@ function clearAll() {
           <button
             @click="clearAll"
             data-testid="clear-btn"
-            class="rounded-md border border-white/10 px-3 py-1 text-[12px] font-semibold text-slate-500 transition-all hover:border-white/20 hover:text-slate-300"
+            class="rounded-md border border-border px-3 py-1 text-[12px] font-semibold text-muted transition-all hover:border-border hover:text-foreground"
           >
             Clear
           </button>
@@ -82,7 +82,7 @@ function clearAll() {
         v-model="jsonInput"
         data-testid="json-input"
         placeholder='Paste your JSON here… e.g. {"name":"Tony","age":25}'
-        class="custom-scroll w-full resize-y bg-transparent p-5 font-mono text-sm text-slate-300 placeholder-slate-700 outline-none"
+        class="custom-scroll w-full resize-y bg-transparent p-5 font-mono text-sm text-foreground placeholder-faint outline-none"
         rows="15"
         spellcheck="false"
       ></textarea>
@@ -105,12 +105,12 @@ function clearAll() {
   <!-- Formatted JSON -->
   <div
     v-if="parsedJson !== null && parsedJson !== undefined"
-    class="bg-elevated/10 mt-5 animate-[fadeUp_0.25s_ease] overflow-hidden rounded-xl border border-white/10"
+    class="bg-elevated mt-5 animate-[fadeUp_0.25s_ease] overflow-hidden rounded-xl border border-border"
     data-testid="formatted-json"
   >
-    <div class="flex items-center justify-between border-b border-white/5 bg-white/2 px-4 py-2">
+    <div class="flex items-center justify-between border-b border-border bg-surface px-4 py-2">
       <span
-        class="flex items-center gap-2 text-[11px] font-bold tracking-widest text-slate-500 uppercase"
+        class="flex items-center gap-2 text-[11px] font-bold tracking-widest text-muted uppercase"
       >
         <span class="bg-success h-2 w-2 rounded-full shadow-[0_0_6px_#34d399]"></span>
         Formatted Output
@@ -119,8 +119,8 @@ function clearAll() {
       <button
         @click="copyOutput"
         data-testid="copy-btn"
-        class="flex items-center gap-1.5 rounded-md border border-white/10 px-3 py-1 text-[12px] font-semibold transition-all hover:border-white/20"
-        :class="copied ? 'text-success' : 'text-slate-500 hover:text-slate-300'"
+        class="flex items-center gap-1.5 rounded-md border border-border px-3 py-1 text-[12px] font-semibold transition-all hover:border-border"
+        :class="copied ? 'text-success' : 'text-muted hover:text-foreground'"
       >
         <svg v-if="!copied" width="13" height="13" viewBox="0 0 14 14" fill="none">
           <rect

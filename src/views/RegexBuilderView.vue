@@ -162,31 +162,31 @@ watch(testString, () => {
 <template>
   <div>
     <div class="flex flex-col gap-2">
-      <h1 class="text-3xl font-extrabold tracking-tight text-white">Regex Builder</h1>
+      <h1 class="text-accent text-3xl font-extrabold tracking-tight">Regex Builder</h1>
       <p class="text-muted text-sm font-semibold tracking-widest uppercase">Build · Copy · Test</p>
     </div>
 
     <!-- How to use -->
-    <div class="mt-5 overflow-hidden rounded-xl border border-white/10 transition-colors">
-      <div class="flex items-center justify-between border-b border-white/5 bg-white/2 px-4 py-2">
+    <div class="border-border mt-5 overflow-hidden rounded-xl border transition-colors">
+      <div class="border-border bg-surface flex items-center justify-between border-b px-4 py-2">
         <span
-          class="flex items-center gap-2 text-[11px] font-bold tracking-widest text-slate-500 uppercase"
+          class="text-muted flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase"
         >
           <span class="h-2 w-2 rounded-full bg-purple-400 shadow-[0_0_6px_#a78bfa]"></span>
           How to Use
         </span>
       </div>
-      <div class="divide-y divide-white/5 px-3 py-3 font-mono text-sm sm:px-4">
+      <div class="divide-border divide-y px-3 py-3 font-mono text-sm sm:px-4">
         <!-- Anchors -->
         <div class="pb-3">
-          <p class="mb-2 text-[11px] font-bold tracking-widest text-slate-500 uppercase">Anchors</p>
+          <p class="text-muted mb-2 text-[11px] font-bold tracking-widest uppercase">Anchors</p>
           <div class="flex flex-col gap-2">
             <div class="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-3">
               <span class="w-6 shrink-0 text-yellow-400">^</span>
-              <span class="text-slate-400"
+              <span class="text-muted"
                 >Asserts the match must start at the beginning of the string.</span
               >
-              <span class="shrink-0 text-xs text-slate-600 sm:ml-auto sm:text-sm"
+              <span class="text-faint shrink-0 text-xs sm:ml-auto sm:text-sm"
                 >e.g.
                 <span class="text-slate-400"
                   ><span class="text-green-400">1</span>hello → matches
@@ -196,10 +196,10 @@ watch(testString, () => {
             </div>
             <div class="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-3">
               <span class="w-6 shrink-0 text-yellow-400">$</span>
-              <span class="text-slate-400"
+              <span class="text-muted"
                 >Asserts the match must occur at the very end of the string.</span
               >
-              <span class="shrink-0 text-xs text-slate-600 sm:ml-auto sm:text-sm"
+              <span class="text-faint shrink-0 text-xs sm:ml-auto sm:text-sm"
                 >e.g.
                 <span class="text-slate-400"
                   >hello<span class="text-green-400">9</span> → matches
@@ -212,7 +212,7 @@ watch(testString, () => {
 
         <!-- Character Types -->
         <div class="py-3">
-          <p class="mb-2 text-[11px] font-bold tracking-widest text-slate-500 uppercase">
+          <p class="text-muted mb-2 text-[11px] font-bold tracking-widest uppercase">
             Character Types
           </p>
           <div class="flex flex-col gap-2">
@@ -372,7 +372,7 @@ watch(testString, () => {
 
         <!-- Flags -->
         <div class="pt-3">
-          <p class="mb-2 text-[11px] font-bold tracking-widest text-slate-500 uppercase">Flags</p>
+          <p class="text-muted mb-2 text-[11px] font-bold tracking-widest uppercase">Flags</p>
           <div class="flex flex-col gap-2">
             <div class="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-3">
               <span class="w-6 shrink-0 text-yellow-400">g</span>
@@ -414,10 +414,10 @@ watch(testString, () => {
     </div>
 
     <!-- Regex Anchors -->
-    <div class="mt-5 overflow-hidden rounded-xl border border-white/10 transition-colors">
-      <div class="flex items-center justify-between border-b border-white/5 bg-white/2 px-4 py-2">
+    <div class="border-border mt-5 overflow-hidden rounded-xl border transition-colors">
+      <div class="border-border bg-surface flex items-center justify-between border-b px-4 py-2">
         <span
-          class="flex items-center gap-2 text-[11px] font-bold tracking-widest text-slate-500 uppercase"
+          class="text-muted flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase"
         >
           <span class="h-2 w-2 rounded-full bg-yellow-400 shadow-[0_0_6px_#fbbf24]"></span>
           Anchors
@@ -434,7 +434,7 @@ watch(testString, () => {
             :class="
               (btn.value === '^' && startAnchor) || (btn.value === '$' && endAnchor)
                 ? 'bg-accent font-semibold text-white'
-                : 'border-white/20 text-slate-500 hover:text-slate-300'
+                : 'border-border text-muted hover:text-foreground'
             "
             @click="applyAnchor(btn.value)"
           >
@@ -445,10 +445,10 @@ watch(testString, () => {
     </div>
 
     <!-- Regex Buttons -->
-    <div class="mt-5 overflow-hidden rounded-xl border border-white/10 transition-colors">
-      <div class="flex items-center justify-between border-b border-white/5 bg-white/2 px-4 py-2">
+    <div class="border-border mt-5 overflow-hidden rounded-xl border transition-colors">
+      <div class="border-border bg-surface flex items-center justify-between border-b px-4 py-2">
         <span
-          class="flex items-center gap-2 text-[11px] font-bold tracking-widest text-slate-500 uppercase"
+          class="text-muted flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase"
         >
           <span class="h-2 w-2 rounded-full bg-yellow-400 shadow-[0_0_6px_#fbbf24]"></span>
           Character Types
@@ -465,7 +465,7 @@ watch(testString, () => {
             :class="
               btn.active
                 ? 'bg-accent font-semibold text-white'
-                : 'border-white/20 text-slate-500 hover:text-slate-300'
+                : 'border-border text-muted hover:text-foreground'
             "
             @click="toggleRegexBtn(btn.id)"
           >
@@ -476,10 +476,10 @@ watch(testString, () => {
     </div>
 
     <!-- Quantifiers -->
-    <div class="mt-5 overflow-hidden rounded-xl border border-white/10 transition-colors">
-      <div class="flex items-center justify-between border-b border-white/5 bg-white/2 px-4 py-2">
+    <div class="border-border mt-5 overflow-hidden rounded-xl border transition-colors">
+      <div class="border-border bg-surface flex items-center justify-between border-b px-4 py-2">
         <span
-          class="flex items-center gap-2 text-[11px] font-bold tracking-widest text-slate-500 uppercase"
+          class="text-muted flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase"
         >
           <span class="h-2 w-2 rounded-full bg-yellow-400 shadow-[0_0_6px_#fbbf24]"></span>
           Quantifiers
@@ -493,7 +493,7 @@ watch(testString, () => {
             :key="btn.label"
             :data-testid="`quantifier-btn-${btn.value}`"
             @click="applyQuantifier(btn.value)"
-            class="cursor-pointer rounded-lg border border-white/20 px-3 py-1 font-mono text-slate-500 transition-colors duration-300 hover:text-slate-300"
+            class="border-border text-muted hover:text-foreground cursor-pointer rounded-lg border px-3 py-1 font-mono transition-colors duration-300"
           >
             {{ btn.label }}
           </button>
@@ -502,10 +502,10 @@ watch(testString, () => {
     </div>
 
     <!-- Flags -->
-    <div class="mt-5 overflow-hidden rounded-xl border border-white/10 transition-colors">
-      <div class="flex items-center justify-between border-b border-white/5 bg-white/2 px-4 py-2">
+    <div class="border-border mt-5 overflow-hidden rounded-xl border transition-colors">
+      <div class="border-border bg-surface flex items-center justify-between border-b px-4 py-2">
         <span
-          class="flex items-center gap-2 text-[11px] font-bold tracking-widest text-slate-500 uppercase"
+          class="text-muted flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase"
         >
           <span class="h-2 w-2 rounded-full bg-yellow-400 shadow-[0_0_6px_#fbbf24]"></span>
           Flags
@@ -531,10 +531,10 @@ watch(testString, () => {
     </div>
 
     <!-- Regex Pattern Output -->
-    <div class="mt-5 overflow-hidden rounded-xl border border-white/10 transition-colors">
-      <div class="flex items-center justify-between border-b border-white/5 bg-white/2 px-4 py-2">
+    <div class="border-border mt-5 overflow-hidden rounded-xl border transition-colors">
+      <div class="border-border bg-surface flex items-center justify-between border-b px-4 py-2">
         <span
-          class="flex items-center gap-2 text-[11px] font-bold tracking-widest text-slate-500 uppercase"
+          class="text-muted flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase"
         >
           <span class="h-2 w-2 rounded-full bg-blue-400 shadow-[0_0_6px_#34d399]"></span>
           Regex Pattern
@@ -581,7 +581,7 @@ watch(testString, () => {
           <button
             @click="clearRegexPattern"
             data-testid="clear-btn"
-            class="cursor-pointer rounded-md border border-white/10 px-3 py-1 text-[12px] font-semibold text-slate-500 transition-all hover:border-white/20 hover:text-slate-300"
+            class="border-border text-muted hover:border-border hover:text-foreground cursor-pointer rounded-md border px-3 py-1 text-[12px] font-semibold transition-all"
           >
             Clear
           </button>
@@ -595,16 +595,16 @@ watch(testString, () => {
           placeholder="Your regex pattern will shown here"
           data-testid="regex-pattern"
           disabled
-          class="w-full overflow-x-auto rounded-lg px-3 py-1 font-mono font-bold text-slate-500 placeholder:font-mono placeholder:text-slate-700"
+          class="text-muted placeholder:text-faint w-full overflow-x-auto rounded-lg px-3 py-1 font-mono font-bold placeholder:font-mono"
         />
       </div>
     </div>
 
     <!-- Test Regex -->
-    <div class="mt-5 overflow-hidden rounded-xl border border-white/10 transition-colors">
-      <div class="flex items-center justify-between border-b border-white/5 bg-white/2 px-4 py-2">
+    <div class="border-border mt-5 overflow-hidden rounded-xl border transition-colors">
+      <div class="border-border bg-surface flex items-center justify-between border-b px-4 py-2">
         <span
-          class="flex items-center gap-2 text-[11px] font-bold tracking-widest text-slate-500 uppercase"
+          class="text-muted flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase"
         >
           <span class="h-2 w-2 rounded-full bg-blue-400 shadow-[0_0_6px_#34d399]"></span>
           Test Regex
@@ -635,16 +635,16 @@ watch(testString, () => {
           v-model="testString"
           data-testid="test-string"
           placeholder="Enter text to test regex"
-          class="w-full rounded-lg px-3 py-1 font-mono text-slate-500 outline-none placeholder:font-mono placeholder:text-slate-700"
+          class="text-muted placeholder:text-faint w-full rounded-lg px-3 py-1 font-mono outline-none placeholder:font-mono"
         />
       </div>
     </div>
 
     <!-- Output -->
-    <div class="mt-5 overflow-hidden rounded-xl border border-white/10 transition-colors">
-      <div class="flex items-center justify-between border-b border-white/5 bg-white/2 px-4 py-2">
+    <div class="border-border mt-5 overflow-hidden rounded-xl border transition-colors">
+      <div class="border-border bg-surface flex items-center justify-between border-b px-4 py-2">
         <span
-          class="flex items-center gap-2 text-[11px] font-bold tracking-widest text-slate-500 uppercase"
+          class="text-muted flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase"
         >
           <span class="h-2 w-2 rounded-full bg-green-400 shadow-[0_0_6px_#34d399]"></span>
           Output
